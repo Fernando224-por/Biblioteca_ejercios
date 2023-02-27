@@ -17,9 +17,9 @@ public class Reto9 {
         else{
         System.out.println("¿cuantas veces quiere jugar?");
         change=dates.nextInt();
+        for (i=0;i<=change;i++) {
         System.out.println("Escoga 1 si cree que la moneda caera cara, escoja 2 si cree que la moneda caera sello");
         valueCaptured=dates.nextInt();
-        for (i=0;i<=change;i++) {
         int valueRandom = (int)Math.floor(Math.random()*2+1);
             System.out.println("desea apostar mas dinero? 1 si.   2  no (si es la primera apuesta, haga caso omiso) ");
             int posibility = dates.nextInt();
