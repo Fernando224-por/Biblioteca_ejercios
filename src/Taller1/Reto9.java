@@ -49,7 +49,7 @@ public class Reto9 {
             System.out.println("usted a ganado la cantidad de "+acumulador);
         }
         else{
-            System.out.println("su saldo es 0");
+            System.out.println("su saldo es 0");   
         }
         dates.close();
     }
