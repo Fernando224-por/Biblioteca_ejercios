@@ -2,55 +2,70 @@ package Taller1;
 import java.util.Scanner;
 public class Reto9 {
     public static void main(String[] args) throws Exception {
-        System.out.println("bienvenido al simulador de carisello");
-        System.out.println("Digite una cantidad para apostar, la cantidad minima para apostar es 500 pesos");
         Scanner dates =new Scanner (System.in);
-        int bet=dates.nextInt();
-        int globalBet=500;
-        int acumulador=0,parcWinbet;
-        int valueCaptured;
-        int change=0;
-        int i;
-        if(bet<500){
-            System.out.println("digite mas de 500 pesos, si no no apueste.....pobre XD");
-        }
-        else{
-        System.out.println("¿cuantas veces quiere jugar?");
-        change=dates.nextInt();
-        for (i=0;i<=change;i++) {
-        System.out.println("Escoga 1 si cree que la moneda caera cara, escoja 2 si cree que la moneda caera sello");
-        valueCaptured=dates.nextInt();
+        /*int captureBet;*/
+        int parcialBet;
+        int posibilityCapture;
+        int change=3;
+        int i = 0;
+        int newValue;
+        int desitionPlayer;
+        int subtotal=0;
         int valueRandom = (int)Math.floor(Math.random()*2+1);
-            System.out.println("desea apostar mas dinero? 1 si.   2  no (si es la primera apuesta, haga caso omiso) ");
-            int posibility = dates.nextInt();
-            if(posibility == 1){
-                System.out.println("Digite una cantidad para apostar, la cantidad minima para apostar es 500 pesos");
-               int newBet=dates.nextInt();
-               bet = newBet + acumulador;
-            }
-        else{
-        if (valueCaptured==valueRandom){    
-            System.out.println("usted gano");
-            parcWinbet=bet*2;
-            acumulador=parcWinbet+globalBet;
+        System.out.println("bienvenido al simulador de carisello");
+        System.out.println("Digite una cantidad para apostar");
+        subtotal=dates.nextInt();
+        while (change==3) {
+            System.out.println("de esos "+subtotal+" cuanto dinero usara?");
+            parcialBet=dates.nextInt();
+            subtotal=subtotal-parcialBet;
+            System.out.println("Escoga 1 si cree que la moneda caera cara, escoja 2 si cree que la moneda caera sello");
+            posibilityCapture=dates.nextInt();
+                if (posibilityCapture==valueRandom) {
+                    parcialBet=parcialBet*2;
+                    subtotal=subtotal+parcialBet;
+                        System.out.println("usted gano, su apuesta se duplica");
+                        System.out.println("su saldo es "+subtotal);
+                        System.out.println("quere ingresar una nueva cantidad de apuesta?1.si    2.no");
+                        desitionPlayer=dates.nextInt();
+                        if(desitionPlayer==1){
+                            System.out.println("ingrese una nueva apuesta de dinero");
+                            newValue=dates.nextInt();
+                            subtotal=subtotal+newValue;
+                            System.out.println("digite 3 para continua o 4 para detener la ejecucuion");
+                            change=dates.nextInt();
+                            i++;
+                        }
+                        else{
+                            System.out.println("digite 3 para continua o 4 para detener la ejecucuion");
+                            change=dates.nextInt();
+                            i++;
+                        }
+                }
+                else {
+                    subtotal=subtotal+parcialBet-parcialBet;
+                    System.out.println("usted perdio, su apuesta se restara a el valor total ingresado");
+                    System.out.println("su saldo es "+subtotal);
+                    System.out.println("usted quiere volver a jugar?");
+                    System.out.println("quiere ingresar mas dinero par apostar?1.si    2.no");
+                    desitionPlayer=dates.nextInt();
+                        if(desitionPlayer==1){
+                            System.out.println("ingrese una nueva cantidad de dinero");
+                            newValue=dates.nextInt();
+                            subtotal=subtotal+newValue;
+                            System.out.println("digite 3 para continua o 4 para detener la ejecucuion");
+                            change=dates.nextInt();
+                            i++;
+                        }
+                        else{
+                            System.out.println("digite 3 para continua o 4 para detener la ejecucuion");
+                            change=dates.nextInt();
+                            i++;
+                        }
+                }
         }
-        else{
-            System.out.println("usted perdio");
-            acumulador=bet-globalBet;
-        }
-        }
-        }
-        }
-        System.out.println("ya se acabo el juego, usted jugo la cantidad de "+change);
-        if (acumulador<0) {
-            System.out.println ("usted a debe la cantidad de"+acumulador);
-        }
-        else if(acumulador>0){
-            System.out.println("usted a ganado la cantidad de "+acumulador);
-        }
-        else{
-            System.out.println("su saldo es 0");   
-        }
+        System.out.println("usted jugo "+i+" veces");
+        System.out.println("al final del juego usted obtuvo la cantidad de "+subtotal);
         dates.close();
     }
-}
+} 
