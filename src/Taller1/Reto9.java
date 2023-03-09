@@ -18,7 +18,6 @@ public class Reto9 {
         while (change==3) {
             System.out.println("de esos "+subtotal+" cuanto dinero usara?");
             parcialBet=dates.nextInt();
-            subtotal=subtotal-parcialBet;
             System.out.println("Escoga 1 si cree que la moneda caera cara, escoja 2 si cree que la moneda caera sello");
             posibilityCapture=dates.nextInt();
                 if (posibilityCapture==valueRandom) {
@@ -43,7 +42,7 @@ public class Reto9 {
                         }
                 }
                 else {
-                    subtotal=subtotal+parcialBet-parcialBet;
+                    subtotal=subtotal-parcialBet;
                     System.out.println("usted perdio, su apuesta se restara a el valor total ingresado");
                     System.out.println("su saldo es "+subtotal);
                     System.out.println("usted quiere volver a jugar?");
